@@ -1,4 +1,6 @@
 import MovieItem from "./MovieItem";
+import { v4 as uuidv4 } from 'uuid';
+
 export default function MovieList({ data, searchInput, handleNominate }) {
   return (
     <section className="list-container">
@@ -6,7 +8,7 @@ export default function MovieList({ data, searchInput, handleNominate }) {
       <div>
         {data.Response === "True" ? (
           data.Search.map((movie) => {
-            return <MovieItem movie={movie} handleNominate={handleNominate} />;
+            return <MovieItem movie={movie} handleNominate={handleNominate} key ={uuidv4()}/>;
           })
         ) : (
           <p>{data.Error}</p>
