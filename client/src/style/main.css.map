@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AEAA,AAAA,mBAAmB,CAAC;EAChB,KAAK,EAAE,GAAG;EACV,gBAAgB,EAAE,GAAG;EACrB,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "main.scss",
+        "partials/_mixins.scss",
+        "partials/_searchInput.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
