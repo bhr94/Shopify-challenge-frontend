@@ -1,13 +1,14 @@
 .list-item {
-    width: 250px;
-    background-color: red;
-    margin: 10px;
-    border-radius: 5px;
+  width: 250px;
+  background-color: #fafafa;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px #e1e1e1;
 
-    &__poster {
-        width: 250px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        height: 300px;
-    }
+  &__poster {
+    width: 250px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 300px;
+  }
 }

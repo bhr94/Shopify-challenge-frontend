@@ -1,7 +1,9 @@
 .main-container {
-    background-color: aliceblue;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-container__lists {
-    display: flex;
+  display: flex;
 }

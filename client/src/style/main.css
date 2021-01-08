@@ -3,8 +3,9 @@
   background-color: white;
   padding: 1.5rem;
   border: 1px solid #e2dfdf;
-  -webkit-box-shadow: red;
-          box-shadow: red;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .title-search__form--title {
@@ -16,12 +17,13 @@
   width: 92%;
   padding: 0.6rem 0;
   padding-left: 2.2rem;
-  border: 1px solid #e2dfdf;
+  border: 2px solid #e2dfdf;
   font-size: 1rem;
 }
 
 .title-search__form--input:focus {
   outline: none;
+  border: 2px solid #323232;
 }
 
 .title-search__form--icon {
@@ -36,7 +38,14 @@
 }
 
 .main-container {
-  background-color: aliceblue;
+  background-color: #fafafa;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .main-container__lists {
@@ -47,9 +56,11 @@
 
 .list-item {
   width: 250px;
-  background-color: red;
+  background-color: #fafafa;
   margin: 10px;
   border-radius: 5px;
+  -webkit-box-shadow: 5px 5px #e1e1e1;
+          box-shadow: 5px 5px #e1e1e1;
 }
 
 .list-item__poster {
