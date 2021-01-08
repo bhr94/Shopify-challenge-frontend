@@ -4,7 +4,7 @@ export default function SearchInput() {
   return (
     <form className="title-search__form">
       <h3 className="title-search__form--title">Movie title</h3>
-      <div>
+      <div className = "container">
         <input type="text" className="title-search__form--input" />
         <img
           alt="movie title search icon"
