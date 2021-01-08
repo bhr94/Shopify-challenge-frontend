@@ -4,11 +4,12 @@ export default function MovieList(props) {
   return (
     <section className="list-container">
       <h2>Results for ...</h2>
-      <ol>
-        {movies.map((movie) => {
+      <ul>
+        {/* {movies.map((movie) => {
           <MovieItem movie={movie} handleNominate={props.handleNominate} />;
-        })}
-      </ol>
+        })} */}
+        <MovieItem handleNominate={props.handleNominate} />
+      </ul>
     </section>
   );
 }
