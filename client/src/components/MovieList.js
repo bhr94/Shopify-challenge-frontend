@@ -1,14 +1,12 @@
 import MovieItem from "./MovieItem";
-export default function MovieList(props) {
-  const movies = props;
+export default function MovieList({ data, searchInput,handleNominate }) {
   return (
     <section className="list-container">
-      <h2>Results for ...</h2>
+      <h2>Results for {searchInput}</h2>
       <ul>
-        {/* {movies.map((movie) => {
-          <MovieItem movie={movie} handleNominate={props.handleNominate} />;
-        })} */}
-        <MovieItem handleNominate={props.handleNominate} />
+        {data.Response === "True"?data.Search.map((movie) => {
+          <MovieItem movie={movie} handleNominate={handleNominate} />;
+        }):<p>{data.Error}</p>}
       </ul>
     </section>
   );
