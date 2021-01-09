@@ -60,10 +60,11 @@ function App() {
         }
       }
     } else {
-      setModal(true);
-      setTimeout(() => {
-        setModal(false);
-      }, 2000);
+      let content = `You have already reached the nomination limit...`;
+      addToast(content, {
+        appearance: "info",
+        autoDismiss: true,
+      });
     }
 
     // document.querySelector(".message").style.display = "flex";
