@@ -18,6 +18,10 @@ function App() {
         setData(response.data);
       });
   }
+
+  function handleNominate() {
+    
+  }
   return (
     <section className="main-container">
       <form className="title-search__form">
@@ -37,7 +41,7 @@ function App() {
         </div>
       </form>
       <main className="main-container__lists">
-        <MovieList data={data} searchInput={searchInput} />
+        <MovieList data={data} searchInput={searchInput} handleNominate ={handleNominate} />
         <NominatedItemList />
       </main>
     </section>

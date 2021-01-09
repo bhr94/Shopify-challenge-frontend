@@ -1,3 +1,4 @@
+import { Button } from 'reactstrap';
 export default function MovieItem({ movie, handleNominate }) {
   return (
     <li className="list-item">
@@ -5,9 +6,9 @@ export default function MovieItem({ movie, handleNominate }) {
       <p className="list-item__title">
         {movie.Title} ({movie.Year})
       </p>
-      <button className="list-item__button" onClick={handleNominate}>
+      <Button color="secondary" className="list-item__button" onClick={handleNominate}>
         Nominate
-      </button>
+      </Button>
     </li>
   );
 }
