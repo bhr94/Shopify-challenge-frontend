@@ -1,17 +1,20 @@
 import NominatedItem from "./NominatedItem";
-export default function NominatedItemList(props) {
-  const movies = props;
+export default function NominatedItemList({ movies, handleRemove }) {
   return (
     <section className="list-container">
       <h2>Nominations</h2>
       <ul>
-        {movies.length&&movies.map((movie) => {
-          <NominatedItem
-            movie={movie}
-            handleRemove={(id) => props.handleRemove(id)}
-            id={movie.imdbID}
-          />;
-        })}
+        {movies.length > 0 &&
+          movies.map((movie) => {
+            return (
+              <NominatedItem
+                movie={movie}
+                handleRemove={() => handleRemove(movie.imdbID)}
+                id={movie.imdbID}
+                key={movie.imdbID}
+              />
+            );
+          })}
       </ul>
     </section>
   );

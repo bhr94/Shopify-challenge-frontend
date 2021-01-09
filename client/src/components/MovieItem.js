@@ -9,7 +9,7 @@ export default function MovieItem({ movie, handleNominate, id }) {
       <Button
         color="secondary"
         className="list-item__button"
-        onClick={(id) => handleNominate(id)}
+        onClick={() => handleNominate(id)}
       >
         Nominate
       </Button>

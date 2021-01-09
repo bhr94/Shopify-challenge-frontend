@@ -11,7 +11,8 @@ export default function MovieList({ data, searchInput, handleNominate }) {
               <MovieItem
                 movie={movie}
                 handleNominate={handleNominate}
-                id={movie.imdbID}
+                key={movie.imdbID}
+                id = {movie.imdbID}
               />
             );
           })
