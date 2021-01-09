@@ -4,7 +4,6 @@ import MovieList from "./components/MovieList";
 import NominatedItemList from "./components/NominatedItemList";
 import searchIcon from "./assets/Icons/Icon-search.svg";
 import axios from "axios";
-import ModalExample from "./components/ModalExample";
 // import Notifications, { notify } from "react-notify-toast";
 import ReactNotification from "react-notifications-component";
 import { useToasts } from "react-toast-notifications";
@@ -15,8 +14,6 @@ function App() {
   const [data, setData] = useState({});
   const [searchInput, setSearchInput] = useState("");
   const [nominatedMovies, setNominatedMovie] = useState([]);
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
   const { addToast } = useToasts();
 
   function handleChange(e) {
@@ -112,7 +109,6 @@ function App() {
             src={searchIcon}
             className="title-search__form--icon"
           />
-          <ModalExample toggle={toggle} modal={modal} />
         </div>
       </form>
       <ReactNotification />
