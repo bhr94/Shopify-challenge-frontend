@@ -24,17 +24,23 @@ function App() {
     for (let i = 0; i < data.Search.length; i++) {
       if (id === data.Search[i].imdbID) {
         setNominatedMovie([...nominatedMovies, data.Search[i]]);
-        console.log("bahar" + nominatedMovies)
+        console.log("bahar" + JSON.stringify(nominatedMovies));
+        document.getElementById(id).children[2].disabled = "true";
       }
     }
   }
 
   function handleRemove(id) {
-    for(let i = 0; i < nominatedMovies.length; i++) {
-      if(id === nominatedMovies[i]) {
+    for (let i = 0; i < nominatedMovies.length; i++) {
+      if (id === nominatedMovies[i]) {
         let copy = nominatedMovies;
-        copy.splice(i,1);
+        copy.splice(i, 1);
         setNominatedMovie(copy);
+        for (let k = 0; k < data.Search.length; k++) {
+          if (id === data.Search[i].imdbID) {
+            document.getElementById(id).children[2].disabled = "false";
+          }
+        }
       }
     }
   }
@@ -62,7 +68,10 @@ function App() {
           searchInput={searchInput}
           handleNominate={handleNominate}
         />
-        <NominatedItemList movies = {nominatedMovies} handleRemove = {handleRemove}/>
+        <NominatedItemList
+          movies={nominatedMovies}
+          handleRemove={handleRemove}
+        />
       </main>
     </section>
   );
