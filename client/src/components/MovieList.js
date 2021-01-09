@@ -1,5 +1,4 @@
 import MovieItem from "./MovieItem";
-import { v4 as uuidv4 } from "uuid";
 
 export default function MovieList({ data, searchInput, handleNominate }) {
   return (
@@ -12,7 +11,7 @@ export default function MovieList({ data, searchInput, handleNominate }) {
               <MovieItem
                 movie={movie}
                 handleNominate={handleNominate}
-                key={uuidv4()}
+                id={movie.imdbID}
               />
             );
           })

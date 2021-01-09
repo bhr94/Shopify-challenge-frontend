@@ -5,10 +5,13 @@ export default function NominatedItemList(props) {
     <section className="list-container">
       <h2>Nominations</h2>
       <ul>
-        {/* {movies.map((movie) => {
-          <NominatedItem movie={movie} handleRemove={props.handleRemove} />;
-        })} */}
-        <NominatedItem handleRemove={props.handleRemove} />
+        {movies.length&&movies.map((movie) => {
+          <NominatedItem
+            movie={movie}
+            handleRemove={(id) => props.handleRemove(id)}
+            id={movie.imdbID}
+          />;
+        })}
       </ul>
     </section>
   );

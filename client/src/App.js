@@ -9,6 +9,7 @@ const apikey = "3ac0d74";
 function App() {
   const [data, setData] = useState({});
   const [searchInput, setSearchInput] = useState("");
+  const [nominatedMovies, setNominatedMovie] = useState([]);
   function handleChange(e) {
     setSearchInput(e.target.value);
     axios
@@ -19,8 +20,23 @@ function App() {
       });
   }
 
-  function handleNominate() {
-    
+  function handleNominate(id) {
+    for (let i = 0; i < data.Search.length; i++) {
+      if (id === data.Search[i].imdbID) {
+        setNominatedMovie([...nominatedMovies, data.Search[i]]);
+        console.log("bahar" + nominatedMovies)
+      }
+    }
+  }
+
+  function handleRemove(id) {
+    for(let i = 0; i < nominatedMovies.length; i++) {
+      if(id === nominatedMovies[i]) {
+        let copy = nominatedMovies;
+        copy.splice(i,1);
+        setNominatedMovie(copy);
+      }
+    }
   }
   return (
     <section className="main-container">
@@ -41,8 +57,12 @@ function App() {
         </div>
       </form>
       <main className="main-container__lists">
-        <MovieList data={data} searchInput={searchInput} handleNominate ={handleNominate} />
-        <NominatedItemList />
+        <MovieList
+          data={data}
+          searchInput={searchInput}
+          handleNominate={handleNominate}
+        />
+        <NominatedItemList movies = {nominatedMovies} handleRemove = {handleRemove}/>
       </main>
     </section>
   );
