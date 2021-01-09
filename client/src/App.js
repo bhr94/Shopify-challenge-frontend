@@ -25,20 +25,21 @@ function App() {
       if (id === data.Search[i].imdbID) {
         setNominatedMovie([...nominatedMovies, data.Search[i]]);
         console.log("bahar" + JSON.stringify(nominatedMovies));
-        document.getElementById(id).children[2].disabled = "true";
+        document.getElementById(id).children[2].disabled = true;
       }
     }
   }
 
   function handleRemove(id) {
     for (let i = 0; i < nominatedMovies.length; i++) {
-      if (id === nominatedMovies[i]) {
-        let copy = nominatedMovies;
-        copy.splice(i, 1);
-        setNominatedMovie(copy);
+      if (id === nominatedMovies[i].imdbID) {
+        setNominatedMovie(
+          nominatedMovies.filter((movie) => movie.imdbID !== id)
+        );
+        console.log(JSON.stringify(nominatedMovies));
         for (let k = 0; k < data.Search.length; k++) {
-          if (id === data.Search[i].imdbID) {
-            document.getElementById(id).children[2].disabled = "false";
+          if (id === data.Search[k].imdbID) {
+            document.getElementById(id).children[2].disabled = false;
           }
         }
       }
