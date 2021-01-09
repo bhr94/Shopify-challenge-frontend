@@ -7,12 +7,23 @@ export default function MovieList({ data, searchInput, handleNominate }) {
       <ul className="list-container__list">
         {data.Response === "True" ? (
           data.Search.map((movie) => {
-            return (
+            return JSON.parse(
+              localStorage.getItem("nominatedMovieList")
+            ).includes(movie) ? (
               <MovieItem
                 movie={movie}
                 handleNominate={handleNominate}
                 key={movie.imdbID}
-                id = {movie.imdbID}
+                id={movie.imdbID}
+                nominated={true}
+              />
+            ) : (
+              <MovieItem
+                movie={movie}
+                handleNominate={handleNominate}
+                key={movie.imdbID}
+                id={movie.imdbID}
+                nominated={false}
               />
             );
           })

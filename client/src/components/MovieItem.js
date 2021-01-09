@@ -1,6 +1,6 @@
 import { Button } from "reactstrap";
 import img from "../assets/Icons/Icon-likes.svg";
-export default function MovieItem({ movie, handleNominate, id }) {
+export default function MovieItem({ movie, handleNominate, id, nominated }) {
   return (
     <li className="list-item" id={movie.imdbID}>
       <img
@@ -10,13 +10,24 @@ export default function MovieItem({ movie, handleNominate, id }) {
       <p className="list-item__title">
         {movie.Title} ({movie.Year})
       </p>
-      <Button
-        color="secondary"
-        className="list-item__button"
-        onClick={() => handleNominate(id)}
-      >
-        Nominate
-      </Button>
+      {nominated?
+       <Button
+       color="secondary"
+       className="list-item__button disabled"
+      //  onClick={() => handleNominate(id)}
+       disabled = {true}
+     >
+       Nominate
+     </Button>: <Button
+          color="secondary"
+          className="list-item__button"
+          onClick={() => handleNominate(id)}
+          disabled ={false}
+        >
+          Nominate
+        </Button>
+      }
+       
     </li>
   );
 }

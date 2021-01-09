@@ -5,11 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./style/main.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-notifications-component/dist/theme.css'
+// import 'animate.css/animate.compat.css'
+import { ToastProvider, useToasts } from "react-toast-notifications";
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+          <ToastProvider>
+          <App />
+
+          </ToastProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

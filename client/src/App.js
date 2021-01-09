@@ -4,10 +4,11 @@ import MovieList from "./components/MovieList";
 import NominatedItemList from "./components/NominatedItemList";
 import searchIcon from "./assets/Icons/Icon-search.svg";
 import axios from "axios";
-import { Alert } from "reactstrap";
 import ModalExample from "./components/ModalExample";
+// import Notifications, { notify } from "react-notify-toast";
+import ReactNotification from "react-notifications-component";
+import { useToasts } from "react-toast-notifications";
 
-// import Notification from "./components/Notification";
 const backend_url = "http://www.omdbapi.com/";
 const apikey = "3ac0d74";
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [nominatedMovies, setNominatedMovie] = useState([]);
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const { addToast } = useToasts();
 
   function handleChange(e) {
     setSearchInput(e.target.value);
@@ -23,21 +25,19 @@ function App() {
       .get(backend_url + `?s=${e.target.value}&page=1&apikey=${apikey}`)
       .then((response) => {
         console.log(response);
-        let list = JSON.parse(localStorage.getItem("nominatedMovieList"));
         setData(response.data);
-        if (data.Search) {
-          for (let i = 0; i < list.length; i++) {
-            for (let k = 0; k < data.Search.length; k++) {
-              if (list[i].imdbID === data.Search[k].imdbID) {
-                // let id = data.Search[k].imdbID
-                document.getElementById(
-                  list[i].imdbID
-                ).children[2].disabled = true;
-              }
-            }
-          }
-        }
       });
+    // let list = JSON.parse(localStorage.getItem("nominatedMovieList"));
+    // if (data.Search) {
+    //   for (let i = 0; i < list.length; i++) {
+    //     for (let k = 0; k < data.Search.length; k++) {
+    //       if (list[i].imdbID === data.Search[k].imdbID) {
+    //         let id = data.Search[k].imdbID;
+    //         document.getElementById(id).children[2].disabled = true;
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   function handleNominate(id) {
@@ -51,6 +51,12 @@ function App() {
           localStorage.setItem("nominatedMovieList", JSON.stringify(movieList));
           console.log("bahar" + JSON.stringify(nominatedMovies));
           document.getElementById(id).children[2].disabled = true;
+          // notify.show('Toasty!');
+          let content = `${data.Search[i].Title} is nominated`;
+          addToast(content, {
+            appearance: "success",
+            autoDismiss: true,
+          });
         }
       }
     } else {
@@ -71,6 +77,11 @@ function App() {
     for (let i = 0; i < movieList.length; i++) {
       if (id === movieList[i].imdbID) {
         let list = movieList.filter((movie) => movie.imdbID !== id);
+        let content = `${data.Search[i].Title} is removed from nominations`;
+        addToast(content, {
+          appearance: "error",
+          autoDismiss: true,
+        });
         setNominatedMovie(list);
         localStorage.setItem("nominatedMovieList", JSON.stringify(list));
         // console.log(JSON.stringify(nominatedMovies));
@@ -103,13 +114,8 @@ function App() {
           <ModalExample toggle={toggle} modal={modal} />
         </div>
       </form>
-      {/* <Alert
-        color="success"
-        className="message"
-        id="hi"
-      >
-        This is a success alert — check it out!
-      </Alert> */}
+      <ReactNotification />
+      {/* <div className="card"></div> */}
       <main className="main-container__lists">
         <MovieList
           data={data}
