@@ -23,15 +23,32 @@ function App() {
       .get(backend_url + `?s=${e.target.value}&page=1&apikey=${apikey}`)
       .then((response) => {
         console.log(response);
+        let list = JSON.parse(localStorage.getItem("nominatedMovieList"));
         setData(response.data);
+        if (data.Search) {
+          for (let i = 0; i < list.length; i++) {
+            for (let k = 0; k < data.Search.length; k++) {
+              if (list[i].imdbID === data.Search[k].imdbID) {
+                // let id = data.Search[k].imdbID
+                document.getElementById(
+                  list[i].imdbID
+                ).children[2].disabled = true;
+              }
+            }
+          }
+        }
       });
   }
 
   function handleNominate(id) {
-    if (nominatedMovies.length < 5) {
+    let movieList = JSON.parse(localStorage.getItem("nominatedMovieList"));
+    setNominatedMovie(movieList);
+    if (movieList.length < 5) {
       for (let i = 0; i < data.Search.length; i++) {
         if (id === data.Search[i].imdbID) {
           setNominatedMovie([...nominatedMovies, data.Search[i]]);
+          movieList.push(data.Search[i]);
+          localStorage.setItem("nominatedMovieList", JSON.stringify(movieList));
           console.log("bahar" + JSON.stringify(nominatedMovies));
           document.getElementById(id).children[2].disabled = true;
         }
@@ -50,14 +67,18 @@ function App() {
   }
 
   function handleRemove(id) {
-    for (let i = 0; i < nominatedMovies.length; i++) {
-      if (id === nominatedMovies[i].imdbID) {
-        let list = nominatedMovies.filter((movie) => movie.imdbID !== id);
+    let movieList = JSON.parse(localStorage.getItem("nominatedMovieList"));
+    for (let i = 0; i < movieList.length; i++) {
+      if (id === movieList[i].imdbID) {
+        let list = movieList.filter((movie) => movie.imdbID !== id);
         setNominatedMovie(list);
-        console.log(JSON.stringify(nominatedMovies));
-        for (let k = 0; k < data.Search.length; k++) {
-          if (id === data.Search[k].imdbID) {
-            document.getElementById(id).children[2].disabled = false;
+        localStorage.setItem("nominatedMovieList", JSON.stringify(list));
+        // console.log(JSON.stringify(nominatedMovies));
+        if (data.Search) {
+          for (let k = 0; k < data.Search.length; k++) {
+            if (id === data.Search[k].imdbID) {
+              document.getElementById(id).children[2].disabled = false;
+            }
           }
         }
       }
@@ -96,7 +117,7 @@ function App() {
           handleNominate={handleNominate}
         />
         <NominatedItemList
-          movies={nominatedMovies}
+          movies={JSON.parse(localStorage.getItem("nominatedMovieList"))}
           handleRemove={handleRemove}
         />
       </main>
