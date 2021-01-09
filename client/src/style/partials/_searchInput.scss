@@ -4,6 +4,7 @@
   padding: 1.5rem;
   border: 1px solid rgb(226, 223, 223);
   align-self: center;
+  margin-top: 20px;
 
   &--title {
     margin: 0;
@@ -23,13 +24,13 @@
 
   &--icon {
     position: absolute;
-    left: 10px;
-    top: 10px;
-    // left: -93%;
+    left: 25px;
+    top: 15px;
   }
 }
 
 .container {
   position: relative;
   width: 100%;
+  padding: 0;
 }

@@ -2,8 +2,26 @@
   background-color: #fafafa;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .main-container__lists {
   display: flex;
 }
+
+
+.message {
+  position: absolute;
+  width: 200px;
+  top: 200px;
+  display: none;
+  
+  
+}
+.animate__animated.animate__bounceOut {
+  --animate-duration: 4s;
+}
+.animate__animated.animate__bounceIn {
+  --animate-duration: 4s;
+}
+

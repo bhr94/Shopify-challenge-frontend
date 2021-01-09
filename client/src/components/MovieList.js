@@ -2,8 +2,8 @@ import MovieItem from "./MovieItem";
 
 export default function MovieList({ data, searchInput, handleNominate }) {
   return (
-    <section className="list-container">
-      <h2 className="list-container__title">Results for {searchInput}</h2>
+    <section className="list-container movie-list">
+      <h4 className="list-container__title">Results for {searchInput}</h4>
       <ul className="list-container__list">
         {data.Response === "True" ? (
           data.Search.map((movie) => {

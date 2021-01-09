@@ -1,8 +1,13 @@
+import { Alert } from "reactstrap";
 import NominatedItem from "./NominatedItem";
 export default function NominatedItemList({ movies, handleRemove }) {
   return (
     <section className="list-container">
-      <h2>Nominations</h2>
+      {movies.length === 5 ? (
+        <Alert>Congratualtions!!! Now you have 5 nominations</Alert>
+      ) : null}
+
+      <h4>Nominations</h4>
       <ul>
         {movies.length > 0 &&
           movies.map((movie) => {

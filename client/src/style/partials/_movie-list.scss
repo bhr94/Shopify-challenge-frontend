@@ -1,6 +1,13 @@
 .list-container {
+  margin-top: 20px;
   &__list {
     display: flex;
     flex-wrap: wrap;
   }
+}
+
+.movie-list {
+  width: 70%;
+  background:rebeccapurple;
+
 }

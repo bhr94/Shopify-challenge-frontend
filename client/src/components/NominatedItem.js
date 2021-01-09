@@ -5,7 +5,11 @@ export default function NominatedItem({ movie, handleRemove, id }) {
       <p className="list-item__title">
         {movie.Title} ({movie.Year})
       </p>
-      <Button color ="info" className="list-item__button" onClick={() =>handleRemove(id)}>
+      <Button
+        color="info"
+        className="list-item__button"
+        onClick={() => handleRemove(id)}
+      >
         Remove
       </Button>
     </li>
