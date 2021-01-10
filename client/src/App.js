@@ -75,7 +75,7 @@ function App() {
     for (let i = 0; i < movieList.length; i++) {
       if (id === movieList[i].imdbID) {
         let list = movieList.filter((movie) => movie.imdbID !== id);
-        let content = `${data.Search[i].Title} is removed from nominations`;
+        let content = `${movieList[i].Title} is removed from nominations`;
         addToast(content, {
           appearance: "error",
           autoDismiss: true,
