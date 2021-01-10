@@ -3,7 +3,7 @@ import NominatedItem from "./NominatedItem";
 export default function NominatedItemList({ handleRemove }) {
   let movies = JSON.parse(localStorage.getItem("nominatedMovieList"))
   return (
-    <section className="list-container">
+    <section className="list-container nominated-list">
       <h4>Nominations</h4>
       {movies.length === 5 ? (
         <Alert>Congratualtions!!! Now you have 5 nominations</Alert>

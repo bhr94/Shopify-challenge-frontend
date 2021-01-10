@@ -1,5 +1,6 @@
 .list-container {
   margin-top: 20px;
+
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -31,4 +32,10 @@
 .scroll {
   height: 80vh;
   overflow-y: scroll;
+}
+.nominated-list {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }

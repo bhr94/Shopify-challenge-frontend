@@ -25,16 +25,21 @@ function App() {
         setData(response.data);
       });
     // let list = JSON.parse(localStorage.getItem("nominatedMovieList"));
-    // if (data.Search) {
+    // let newData = data;
+    // if (newData.Search) {
     //   for (let i = 0; i < list.length; i++) {
-    //     for (let k = 0; k < data.Search.length; k++) {
-    //       if (list[i].imdbID === data.Search[k].imdbID) {
-    //         let id = data.Search[k].imdbID;
-    //         document.getElementById(id).children[2].disabled = true;
+    //     for (let k = 0; k < newData.Search.length; k++) {
+    //       if (list[i].imdbID === newData.Search[k].imdbID) {
+    //         newData.Search[k].nominated = true;
+    //       }
+    //       else {
+    //         newData.Search[k].nominated = false;
     //       }
     //     }
     //   }
+    // setData(newData);
     // }
+    // console.log(data.Search);
   }
 
   function handleNominate(id) {
@@ -96,7 +101,7 @@ function App() {
   return (
     <section className="main-container">
       <form className="title-search__form">
-        <h3 className="title-search__form--title">Movie title</h3>
+        {/* <h3 className="title-search__form--title">Movie title</h3> */}
         <div className="container">
           <input
             type="text"
