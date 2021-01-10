@@ -1,24 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import "./style/main.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-notifications-component/dist/theme.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-notifications-component/dist/theme.css";
 // import 'animate.css/animate.compat.css'
 import { ToastProvider, useToasts } from "react-toast-notifications";
 
-
 ReactDOM.render(
   <React.StrictMode>
-          <ToastProvider>
-          <App />
-
-          </ToastProvider>
-
+    <ToastProvider>
+      <App />
+    </ToastProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
