@@ -1,6 +1,7 @@
 import { Alert } from "reactstrap";
 import NominatedItem from "./NominatedItem";
-export default function NominatedItemList({ movies, handleRemove }) {
+export default function NominatedItemList({ handleRemove }) {
+  let movies = JSON.parse(localStorage.getItem("nominatedMovieList"))
   return (
     <section className="list-container">
       <h4>Nominations</h4>
