@@ -3,12 +3,11 @@ import NominatedItem from "./NominatedItem";
 export default function NominatedItemList({ movies, handleRemove }) {
   return (
     <section className="list-container">
+      <h4>Nominations</h4>
       {movies.length === 5 ? (
         <Alert>Congratualtions!!! Now you have 5 nominations</Alert>
       ) : null}
-
-      <h4>Nominations</h4>
-      <ul>
+      <ul className="list-container__list nomination-list">
         {movies.length > 0 &&
           movies.map((movie) => {
             return (
