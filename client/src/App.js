@@ -43,21 +43,21 @@ function App() {
   }
 
   function handleNominate(id) {
-    let movieList;
-    JSON.parse(localStorage.getItem("nominatedMovieList"))
-      ? (movieList = JSON.parse(localStorage.getItem("nominatedMovieList")))
-      : (movieList = null);
-
+    let movieList = [];
+    if (JSON.parse(localStorage.getItem("nominatedMovieList"))) {
+      movieList = JSON.parse(localStorage.getItem("nominatedMovieList"));
+    } else {
+      localStorage.setItem("nominatedMovieList", JSON.stringify(movieList));
+    }
     setNominatedMovie(movieList);
-    if (movieList && movieList.length < 5) {
+    if (movieList.length < 5) {
       for (let i = 0; i < data.Search.length; i++) {
         if (id === data.Search[i].imdbID) {
           setNominatedMovie([...nominatedMovies, data.Search[i]]);
           movieList.push(data.Search[i]);
           localStorage.setItem("nominatedMovieList", JSON.stringify(movieList));
-          console.log("bahar" + JSON.stringify(nominatedMovies));
+          // console.log("bahar" + JSON.stringify(nominatedMovies));
           document.getElementById(id).children[2].disabled = true;
-          // notify.show('Toasty!');
           let content = `${data.Search[i].Title} is nominated`;
           addToast(content, {
             appearance: "success",
@@ -65,34 +65,13 @@ function App() {
           });
         }
       }
-    } else if (movieList && movieList.length === 5) {
+    } else {
       let content = `You have already reached the nomination limit...`;
       addToast(content, {
         appearance: "info",
         autoDismiss: true,
       });
-    } else {
-      let list = []
-      for (let i = 0; i < data.Search.length; i++) {
-        if (id === data.Search[i].imdbID) {
-          setNominatedMovie([...nominatedMovies, data.Search[i]]);
-          list.push(data.Search[i]);
-          localStorage.setItem("nominatedMovieList", JSON.stringify(list));
-          console.log("bahar" + JSON.stringify(nominatedMovies));
-          document.getElementById(id).children[2].disabled = true;
-          let content = `${data.Search[i].Title} is nominated`;
-          addToast(content, {
-            appearance: "success",
-            autoDismiss: true,
-          });
-        }
-      }
     }
-
-    // document.querySelector(".message").style.display = "flex";
-    // setTimeout(() => {
-    //   document.querySelector(".message").style.display = "none";
-    // }, 3000);
   }
 
   function handleRemove(id) {
