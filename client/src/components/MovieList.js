@@ -2,9 +2,10 @@ import MovieItem from "./MovieItem";
 
 export default function MovieList({ data, searchInput, handleNominate }) {
   let imdbIDArray = [];
-  JSON.parse(localStorage.getItem("nominatedMovieList")).map((movie) => {
-    return imdbIDArray.push(movie.imdbID);
-  });
+  JSON.parse(localStorage.getItem("nominatedMovieList")) &&
+    JSON.parse(localStorage.getItem("nominatedMovieList")).map((movie) => {
+      return imdbIDArray.push(movie.imdbID);
+    });
   return (
     <section className="list-container movie-list scroll">
       <h4 className="list-container__title">Results for {searchInput}</h4>
