@@ -43,9 +43,13 @@ function App() {
   }
 
   function handleNominate(id) {
-    let movieList = JSON.parse(localStorage.getItem("nominatedMovieList"));
+    let movieList;
+    JSON.parse(localStorage.getItem("nominatedMovieList"))
+      ? (movieList = JSON.parse(localStorage.getItem("nominatedMovieList")))
+      : (movieList = null);
+
     setNominatedMovie(movieList);
-    if (movieList.length < 5) {
+    if (movieList && movieList.length < 5) {
       for (let i = 0; i < data.Search.length; i++) {
         if (id === data.Search[i].imdbID) {
           setNominatedMovie([...nominatedMovies, data.Search[i]]);
@@ -61,12 +65,28 @@ function App() {
           });
         }
       }
-    } else {
+    } else if (movieList && movieList.length === 5) {
       let content = `You have already reached the nomination limit...`;
       addToast(content, {
         appearance: "info",
         autoDismiss: true,
       });
+    } else {
+      let list = []
+      for (let i = 0; i < data.Search.length; i++) {
+        if (id === data.Search[i].imdbID) {
+          setNominatedMovie([...nominatedMovies, data.Search[i]]);
+          list.push(data.Search[i]);
+          localStorage.setItem("nominatedMovieList", JSON.stringify(list));
+          console.log("bahar" + JSON.stringify(nominatedMovies));
+          document.getElementById(id).children[2].disabled = true;
+          let content = `${data.Search[i].Title} is nominated`;
+          addToast(content, {
+            appearance: "success",
+            autoDismiss: true,
+          });
+        }
+      }
     }
 
     // document.querySelector(".message").style.display = "flex";
