@@ -6,7 +6,7 @@ export default function NominatedItem({ movie, handleRemove, id }) {
         {movie.Title} ({movie.Year})
       </p>
       <Button
-        color="info"
+        color="danger"
         className="list-item__button"
         onClick={() => handleRemove(id)}
       >

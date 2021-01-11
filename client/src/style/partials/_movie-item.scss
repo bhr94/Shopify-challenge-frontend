@@ -1,5 +1,5 @@
 .list-item {
-  width: 250px;
+  width: 300px;
   background-color: #fafafa;
   margin: 20px;
   border-radius: 5px;
@@ -17,12 +17,24 @@
     transition: 1s;
     transform: scale(1.03);
   }
-
+ &__button {
+   margin-left: 10px;
+   margin-bottom: 10px;
+ }
   &__poster {
-    width: 250px;
+    width: 300px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    height: 300px;
+    height: 330px;
+  }
+  &__title {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
   }
 }
 
