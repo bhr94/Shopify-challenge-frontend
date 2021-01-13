@@ -9,6 +9,7 @@ import "react-notifications-component/dist/theme.css";
 import { ToastProvider, useToasts } from "react-toast-notifications";
 import { BrowserRouter, Route } from "react-router-dom";
 import MovieDetails from "./components/MovieDetails";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
     <BrowserRouter>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Teko:wght@300&display=swap");
 .title-search__form {
   width: 40%;
   background-color: #fafafa;
@@ -76,7 +78,7 @@
 }
 
 .list-item {
-  width: 300px;
+  width: 240px;
   background-color: #fafafa;
   margin: 20px;
   border-radius: 5px;
@@ -99,10 +101,10 @@
 }
 
 .list-item__poster {
-  width: 300px;
+  width: 240px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  height: 330px;
+  height: 250px;
 }
 
 .list-item__title {
@@ -163,11 +165,6 @@
 .list-item__button {
   -ms-flex-item-align: end;
       align-self: flex-end;
-}
-
-.scroll {
-  height: 80vh;
-  overflow-y: scroll;
 }
 
 .nominated-list {
@@ -382,5 +379,31 @@ input.fire-check:checked ~ section .tn-box .tn-progress {
 
 .modal-main__img {
   height: 100%;
+}
+
+.modal-main__text {
+  margin-left: 10px;
+}
+
+.modal-main__text--title {
+  color: white;
+  font-weight: bold;
+  font-family: "Hind", sans-serif;
+}
+
+.modal-main__text--subtitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: seagreen;
+}
+
+.modal-main__text--production {
+  color: rebeccapurple;
+}
+
+.navbar {
+  position: fixed !important;
+  width: 100%;
+  z-index: 1;
 }
 /*# sourceMappingURL=main.css.map */

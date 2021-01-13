@@ -9,6 +9,9 @@ import { useToasts } from "react-toast-notifications";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 import ModalExample from "./components/ModalExample";
+import Navigation from "./components/Navigation";
+import { Navbar, Form, FormControl } from "react-bootstrap";
+
 const backend_url = "http://www.omdbapi.com/";
 const apikey = "3ac0d74";
 function App() {
@@ -102,7 +105,7 @@ function App() {
   return (
     <section className="main-container">
       {/* <Confetti width={width} height={height} /> */}
-      <form className="title-search__form">
+      {/* <form className="title-search__form">
         <div className="container">
           <input
             type="text"
@@ -116,7 +119,17 @@ function App() {
             className="title-search__form--icon"
           />
         </div>
-      </form>
+      </form> */}
+      <Navbar bg="dark" variant="dark" style ={{posiiton:"fixed"}}>
+        <Form inline>
+          <FormControl
+            type="text"
+            placeholder="Search movie title..."
+            className="mr-sm-2"
+            onChange={handleChange}
+          />
+        </Form>
+      </Navbar>
       <ReactNotification />
       {/* <div className="card"></div> */}
       <ModalExample modal={modal} toggle={toggle} movie={details} />

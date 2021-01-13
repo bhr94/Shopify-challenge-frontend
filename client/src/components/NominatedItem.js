@@ -4,7 +4,7 @@ import { Card, CardTitle, CardText, CardImg } from 'reactstrap';
 export default function NominatedItem({ movie, handleRemove, id }) {
   return (
   
-      <Card body inverse color="success" className="list-item nominated-item">
+      <Card body inverse className="list-item nominated-item">
         <CardTitle tag="h5">{movie.Title}</CardTitle>
         <CardText>({movie.Year})</CardText>
         <Button color="danger" onClick={() => handleRemove(id)}>Remove</Button>
