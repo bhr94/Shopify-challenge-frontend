@@ -4,10 +4,11 @@ import MovieList from "./components/MovieList";
 import NominatedItemList from "./components/NominatedItemList";
 import searchIcon from "./assets/Icons/Icon-search.svg";
 import axios from "axios";
-// import Notifications, { notify } from "react-notify-toast";
 import ReactNotification from "react-notifications-component";
 import { useToasts } from "react-toast-notifications";
-
+import { useWindowSize } from "react-use";
+import Confetti from "react-confetti";
+import ModalExample from "./components/ModalExample";
 const backend_url = "http://www.omdbapi.com/";
 const apikey = "3ac0d74";
 function App() {
@@ -15,33 +16,21 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [nominatedMovies, setNominatedMovie] = useState([]);
   const { addToast } = useToasts();
-
+  const { width, height } = useWindowSize();
+  const [modal, setModal] = useState(false);
+  const [details, setDetails] = useState({});
   function handleChange(e) {
     setSearchInput(e.target.value);
     axios
-      .get(backend_url + `?s=${e.target.value}&page=1&apikey=${apikey}`)
+      .get(backend_url + `?s=${e.target.value}&apikey=${apikey}`)
       .then((response) => {
         console.log(response);
         setData(response.data);
       });
-    // let list = JSON.parse(localStorage.getItem("nominatedMovieList"));
-    // let newData = data;
-    // if (newData.Search) {
-    //   for (let i = 0; i < list.length; i++) {
-    //     for (let k = 0; k < newData.Search.length; k++) {
-    //       if (list[i].imdbID === newData.Search[k].imdbID) {
-    //         newData.Search[k].nominated = true;
-    //       }
-    //       else {
-    //         newData.Search[k].nominated = false;
-    //       }
-    //     }
-    //   }
-    // setData(newData);
-    // }
-    // console.log(data.Search);
   }
-
+  function toggle() {
+    setModal(!modal);
+  }
   function handleNominate(id) {
     let movieList = [];
     if (JSON.parse(localStorage.getItem("nominatedMovieList"))) {
@@ -74,6 +63,19 @@ function App() {
     }
   }
 
+  function handleMoreInfo(id) {
+    toggle();
+    axios
+      .get(`${backend_url}?i=${id}&apikey=${apikey}`)
+      .then((response) => {
+        console.log(response);
+        setDetails(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   function handleRemove(id) {
     let movieList = JSON.parse(localStorage.getItem("nominatedMovieList"));
     for (let i = 0; i < movieList.length; i++) {
@@ -99,13 +101,13 @@ function App() {
   }
   return (
     <section className="main-container">
+      {/* <Confetti width={width} height={height} /> */}
       <form className="title-search__form">
-        {/* <h3 className="title-search__form--title">Movie title</h3> */}
         <div className="container">
           <input
             type="text"
             className="title-search__form--input"
-            placeholder="Please enter the title for a movie.."
+            placeholder="Search movie title..."
             onChange={handleChange}
           />
           <img
@@ -117,11 +119,13 @@ function App() {
       </form>
       <ReactNotification />
       {/* <div className="card"></div> */}
+      <ModalExample modal={modal} toggle={toggle} movie={details} />
       <main className="main-container__lists">
         <MovieList
           data={data}
           searchInput={searchInput}
           handleNominate={handleNominate}
+          handleMoreInfo={handleMoreInfo}
         />
         <NominatedItemList
           movies={JSON.parse(localStorage.getItem("nominatedMovieList"))}
