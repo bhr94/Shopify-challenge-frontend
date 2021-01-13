@@ -25,9 +25,9 @@ const ModalExample = ({ toggle, modal, className, movie }) => {
           className ="modal-main__img"
         />
         <div className ="modal-main__text">
-          <h2>{movie.Title}</h2>
-          <p>{movie.Plot}</p>
-          <h3> {movie.Genre}</h3>
+          <h2 className ="modal-main__text--title">{movie.Title}</h2>
+          <p className ="modal-main__text--subtitle">{movie.Plot}</p>
+          <h3 className ="modal-main__text--production"> {movie.Genre}</h3>
           <p>{movie.Production}</p>
           <p>Director: {movie.Director}</p>
           <p>Released: {movie.Released}</p>
