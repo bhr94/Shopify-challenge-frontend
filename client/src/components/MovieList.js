@@ -1,6 +1,11 @@
 import MovieItem from "./MovieItem";
 
-export default function MovieList({ data, searchInput, handleNominate }) {
+export default function MovieList({
+  data,
+  searchInput,
+  handleNominate,
+  handleMoreInfo,
+}) {
   let imdbIDArray = [];
   JSON.parse(localStorage.getItem("nominatedMovieList")) &&
     JSON.parse(localStorage.getItem("nominatedMovieList")).map((movie) => {
@@ -16,6 +21,7 @@ export default function MovieList({ data, searchInput, handleNominate }) {
               <MovieItem
                 movie={movie}
                 handleNominate={handleNominate}
+                handleMoreInfo={handleMoreInfo}
                 key={movie.imdbID}
                 id={movie.imdbID}
                 nominated={imdbIDArray.includes(movie.imdbID)}

@@ -373,4 +373,14 @@ input.fire-check:checked ~ section .tn-box .tn-progress {
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
 }
+
+.modal-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal-main__img {
+  height: 100%;
+}
 /*# sourceMappingURL=main.css.map */

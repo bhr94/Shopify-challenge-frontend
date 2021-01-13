@@ -6,15 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import "./style/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-notifications-component/dist/theme.css";
-// import 'animate.css/animate.compat.css'
 import { ToastProvider, useToasts } from "react-toast-notifications";
+import { BrowserRouter, Route } from "react-router-dom";
+import MovieDetails from "./components/MovieDetails";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ToastProvider>
-      <App />
-    </ToastProvider>
-  </React.StrictMode>,
+    <BrowserRouter>
+      <ToastProvider>
+        <Route path="/" component={App} />
+      </ToastProvider>
+    </BrowserRouter>,
   document.getElementById("root")
 );
 
