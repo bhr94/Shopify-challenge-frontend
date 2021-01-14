@@ -3,14 +3,24 @@
 
   &__list {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     list-style: none;
     padding-left: 0;
+    justify-content: center;
+
+    @include tablet {
+      flex-direction: row;
+    }
   }
 }
 
 .movie-list {
-  width: 70%;
+  width: 100%;
+  @include desktop {
+    width: 70%;
+  }
+ 
 }
 
 .nomination-list {
@@ -20,8 +30,9 @@
 
 .nominated-item {
   box-shadow: 5px 5px 5px rgba(149, 148, 148, 0.6);
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
+  width: 200px !important;
 
 }
 
@@ -38,4 +49,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  display: none;
+  
+  @include desktop {
+    display: inline;
+  }
+
 }

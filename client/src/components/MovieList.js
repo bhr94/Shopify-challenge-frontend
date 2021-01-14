@@ -12,7 +12,7 @@ export default function MovieList({
       return imdbIDArray.push(movie.imdbID);
     });
   return (
-    <section className="list-container movie-list scroll">
+    <section className="list-container movie-list">
       <h4 className="list-container__title">Results for {searchInput}</h4>
       <ul className="list-container__list">
         {data.Response === "True" ? (

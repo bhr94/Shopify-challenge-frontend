@@ -1,23 +1,25 @@
 .main-container {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  // background:#323232;
-}
+    flex-direction: column;
 
-.main-container__lists {
-  display: flex;
-  justify-content: center;
-}
+  
 
+  &__lists {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    @include desktop {
+      flex-direction: row;
+    }
+    margin-top: 4rem;
+  }
+}
 
 .message {
   position: absolute;
   width: 200px;
   top: 200px;
   display: none;
-  
-  
 }
 .animate__animated.animate__bounceOut {
   --animate-duration: 4s;
@@ -25,4 +27,3 @@
 .animate__animated.animate__bounceIn {
   --animate-duration: 4s;
 }
-
