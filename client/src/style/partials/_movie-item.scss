@@ -12,7 +12,7 @@
   cursor: pointer;
 
   @include tablet {
-    width: 220px;
+    width: 250px;
   }
 
   &:hover {
@@ -20,7 +20,6 @@
     transform: scale(1.03);
   }
   &__button {
-    margin-left: 10px;
     margin-bottom: 10px;
   }
   &__poster {
@@ -29,7 +28,7 @@
     height: 200px;
     width: 100%;
     @include desktop {
-      width: 220px;
+      width: 250px;
     }
   }
   &__title {
@@ -44,6 +43,6 @@
   &__footer {
     display: flex;
     align-items: center;
-    justify-self: center;
+    justify-content: space-around;
   }
 }

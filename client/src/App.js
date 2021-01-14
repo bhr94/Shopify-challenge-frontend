@@ -37,7 +37,7 @@ function App() {
   //fetching some default results to prevent the ui look empty
   function getDefaultResults() {
     axios
-      .get(backend_url + `?s="Inter"&apikey=${apikey}`)
+      .get(backend_url + `?s="Titanic"&apikey=${apikey}`)
       .then((response) => {
         setData(response.data);
       })
@@ -84,7 +84,7 @@ function App() {
       addToast(content, {
         appearance: "info",
         autoDismiss: true,
-        PlacementType:"top-left"
+        PlacementType: "top-left",
       });
     }
   }
@@ -141,13 +141,11 @@ function App() {
             type="text"
             placeholder="Search movie title..."
             className="mr-sm-2"
-            onChange ={handleChange}
+            onChange={handleChange}
           />
         </Form>
       </Navbar>
-
       <ReactNotification />
-      {/* <div className="card"></div> */}
       <ModalExample modal={modal} toggle={toggle} movie={details} />
       <main className="main-container__lists">
         <MovieList

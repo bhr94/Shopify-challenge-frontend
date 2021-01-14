@@ -16,33 +16,35 @@ export default function MovieItem({
       <p className="list-item__title">
         {movie.Title} ({movie.Year})
       </p>
-      {nominated ? (
+      <div className="list-item__footer">
+        {nominated ? (
+          <Button
+            outline
+            color="secondary"
+            className="list-item__button"
+            disabled
+          >
+            Nominate
+          </Button>
+        ) : (
+          <Button
+            outline
+            color="secondary"
+            className="list-item__button"
+            onClick={() => handleNominate(id)}
+          >
+            Nominate
+          </Button>
+        )}
         <Button
           outline
-          color="secondary"
+          color="primary"
           className="list-item__button"
-          disabled
+          onClick={() => handleMoreInfo(id)}
         >
-          Nominate
+          Details
         </Button>
-      ) : (
-        <Button
-          outline
-          color="secondary"
-          className="list-item__button"
-          onClick={() => handleNominate(id)}
-        >
-          Nominate
-        </Button>
-      )}
-      <Button
-        outline
-        color="primary"
-        className="list-item__button"
-        onClick={() => handleMoreInfo(id)}
-      >
-        Details
-      </Button>
+      </div>
     </li>
   );
 }
