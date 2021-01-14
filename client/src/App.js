@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import SearchInput from "./components/SearchInput";
 import MovieList from "./components/MovieList";
 import NominatedItemList from "./components/NominatedItemList";
@@ -10,7 +10,15 @@ import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 import ModalExample from "./components/ModalExample";
 import Navigation from "./components/Navigation";
-import { Navbar, Form, FormControl } from "react-bootstrap";
+import NavBarNominationList from "./components/NavBarNominationList";
+import {
+  Navbar,
+  Form,
+  FormControl,
+  NavDropdown,
+  Nav,
+  Button,
+} from "react-bootstrap";
 
 const backend_url = "http://www.omdbapi.com/";
 const apikey = "3ac0d74";
@@ -22,12 +30,28 @@ function App() {
   const { width, height } = useWindowSize();
   const [modal, setModal] = useState(false);
   const [details, setDetails] = useState({});
+
+  useEffect(() => {
+    getDefaultResults();
+  }, [3]);
+
+  //fetching some default results to prevent the ui look empty
+  function getDefaultResults() {
+    axios
+      .get(backend_url + `?s="Inter"&apikey=${apikey}`)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   function handleChange(e) {
     setSearchInput(e.target.value);
     axios
       .get(backend_url + `?s=${e.target.value}&apikey=${apikey}`)
       .then((response) => {
-        console.log(response);
         setData(response.data);
       });
   }
@@ -48,7 +72,6 @@ function App() {
           setNominatedMovie([...nominatedMovies, data.Search[i]]);
           movieList.push(data.Search[i]);
           localStorage.setItem("nominatedMovieList", JSON.stringify(movieList));
-          // console.log("bahar" + JSON.stringify(nominatedMovies));
           document.getElementById(id).children[2].disabled = true;
           let content = `${data.Search[i].Title} is nominated`;
           addToast(content, {
@@ -71,7 +94,6 @@ function App() {
     axios
       .get(`${backend_url}?i=${id}&apikey=${apikey}`)
       .then((response) => {
-        console.log(response);
         setDetails(response.data);
       })
       .catch((error) => {
@@ -91,7 +113,6 @@ function App() {
         });
         setNominatedMovie(list);
         localStorage.setItem("nominatedMovieList", JSON.stringify(list));
-        // console.log(JSON.stringify(nominatedMovies));
         if (data.Search) {
           for (let k = 0; k < data.Search.length; k++) {
             if (id === data.Search[k].imdbID) {
@@ -105,31 +126,26 @@ function App() {
   return (
     <section className="main-container">
       {/* <Confetti width={width} height={height} /> */}
-      {/* <form className="title-search__form">
-        <div className="container">
-          <input
-            type="text"
-            className="title-search__form--input"
-            placeholder="Search movie title..."
-            onChange={handleChange}
+      <Navbar bg="dark" expand="lg">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <NavBarNominationList
+            movies={JSON.parse(localStorage.getItem("nominatedMovieList"))}
+            handleRemove={handleRemove}
+            handleMoreInfo={handleMoreInfo}
+            className="display-mobile"
           />
-          <img
-            alt="movie title search icon"
-            src={searchIcon}
-            className="title-search__form--icon"
-          />
-        </div>
-      </form> */}
-      <Navbar bg="dark" variant="dark" style ={{posiiton:"fixed"}}>
+        </Navbar.Collapse>
         <Form inline>
           <FormControl
             type="text"
             placeholder="Search movie title..."
             className="mr-sm-2"
-            onChange={handleChange}
+            onChange ={handleChange}
           />
         </Form>
       </Navbar>
+
       <ReactNotification />
       {/* <div className="card"></div> */}
       <ModalExample modal={modal} toggle={toggle} movie={details} />
@@ -143,6 +159,7 @@ function App() {
         <NominatedItemList
           movies={JSON.parse(localStorage.getItem("nominatedMovieList"))}
           handleRemove={handleRemove}
+          handleMoreInfo={handleMoreInfo}
         />
       </main>
     </section>
