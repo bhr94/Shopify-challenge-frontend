@@ -28,8 +28,12 @@ export default function MovieList({
               />
             );
           })
+        ) : data.Response === "False" ? (
+          <NotFound />
         ) : (
-          <NotFound/>
+          [1, 2, 3, 4, 5,6,7,8].map((item) => {
+            return <div className="card"></div>;
+          })
         )}
       </ul>
     </section>

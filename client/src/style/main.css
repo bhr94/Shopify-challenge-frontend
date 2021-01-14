@@ -348,8 +348,9 @@ code {
    * Card Skeleton for Loading
    */
 .card {
-  width: 280px;
+  width: 250px;
   height: var(--card-height);
+  margin: 10px;
 }
 
 .card:empty::after {
