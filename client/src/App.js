@@ -84,6 +84,7 @@ function App() {
       addToast(content, {
         appearance: "info",
         autoDismiss: true,
+        PlacementType:"top-left"
       });
     }
   }

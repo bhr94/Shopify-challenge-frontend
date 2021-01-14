@@ -16,25 +16,47 @@ const ModalExample = ({ toggle, modal, className, movie }) => {
       backdropTransition={{ timeout: 1300 }}
       toggle={toggle}
       className={className}
-      style={{ marginTop: "12rem", maxWidth:"1100px"}}
+      className ="modal-container"
     >
-      <main className ="modal-main">
+      <main className="modal-main">
         <img
           src={movie.Poster === "N/A" ? img : movie.Poster}
           className="list-item__poster"
-          className ="modal-main__img"
+          className="modal-main__img"
         />
-        <div className ="modal-main__text">
-          <h2 className ="modal-main__text--title">{movie.Title}</h2>
-          <p className ="modal-main__text--subtitle">{movie.Plot}</p>
-          <h3 className ="modal-main__text--production"> {movie.Genre}</h3>
+        <div className="modal-main__text">
+          <h2 className="modal-main__text--title">{movie.Title}</h2>
+          <p className="modal-main__text--subtitle">{movie.Plot}</p>
+          <p className="modal-main__text--genre"> {movie.Genre}</p>
           <p>{movie.Production}</p>
-          <p>Director: {movie.Director}</p>
-          <p>Released: {movie.Released}</p>
-          <p>IMDB: {movie.imdbRating}/10</p>
-          <p>Running time: {movie.Runtime}</p>
-          <p>Actors: {movie.Actors}</p>
-          <p>BoxOffice: {movie.BoxOffice}</p>
+          <div className="modal-main__text--details">
+            <p className="detail">
+              <span className="detail-title">Director:</span>
+              <br /> {movie.Director}
+            </p>
+            <p className="detail">
+              <span className="detail-title">Released:</span> <br />
+              {movie.Released}
+            </p>
+            <p className="detail">
+              <span className="detail-title">IMDB:</span>
+              <br /> {movie.imdbRating}/10
+            </p>
+            <br />
+            <p className="detail">
+              <span className="detail-title">Running time:</span> <br />
+              {movie.Runtime}
+            </p>
+            <p className="detail">
+              <span className="detail-title">BoxOffice:</span> <br />
+              {movie.BoxOffice}
+            </p>
+            <p className="detail">
+              <span className="detail-title">Actors:</span> <br />
+              {movie.Actors}
+            </p>
+          </div>
+
           {/* <p>Country: {movie.Country}</p> */}
         </div>
       </main>

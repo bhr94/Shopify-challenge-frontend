@@ -1,6 +1,10 @@
 .list-container {
   margin-top: 20px;
 
+  &__title {
+    color: white;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;

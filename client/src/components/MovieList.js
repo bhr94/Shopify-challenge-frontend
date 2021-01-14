@@ -13,7 +13,7 @@ export default function MovieList({
     });
   return (
     <section className="list-container movie-list">
-      <h4 className="list-container__title">Results for {searchInput}</h4>
+      <h4 className="list-container__title">Results for " {searchInput} "</h4>
       <ul className="list-container__list">
         {data.Response === "True" ? (
           data.Search.map((movie) => {

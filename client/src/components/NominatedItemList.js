@@ -7,7 +7,7 @@ export default function NominatedItemList({ handleRemove, handleMoreInfo }) {
     : (movies = null);
   return (
     <section className="list-container nominated-list">
-      <h4>Nominations</h4>
+      <h4 className="list-container__title">Nominations</h4>
       {movies && movies.length === 5 ? (
         <Alert>Congratualtions!!! Now you have 5 nominations</Alert>
       ) : null}

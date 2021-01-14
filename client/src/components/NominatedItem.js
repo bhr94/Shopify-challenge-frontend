@@ -18,22 +18,24 @@ export default function NominatedItem({
       <p className="list-item__title">
         {movie.Title} ({movie.Year})
       </p>
-      <Button
-        outline
-        color="danger"
-        className="list-item__button"
-        onClick={() => handleRemove(id)}
-      >
-        Remove
-      </Button>
-      <Button
-        outline
-        color="primary"
-        className="list-item__button"
-        onClick={() => handleMoreInfo(id)}
-      >
-        Details
-      </Button>
+      <div className ="list-item__footer">
+        <Button
+          outline
+          color="danger"
+          className="list-item__button"
+          onClick={() => handleRemove(id)}
+        >
+          Remove
+        </Button>
+        <Button
+          outline
+          color="primary"
+          className="list-item__button"
+          onClick={() => handleMoreInfo(id)}
+        >
+          Details
+        </Button>
+      </div>
     </li>
   );
 }

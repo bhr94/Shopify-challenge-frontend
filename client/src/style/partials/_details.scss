@@ -1,26 +1,71 @@
 @import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Teko:wght@300&display=swap");
+
+.modal-container {
+  max-width: 100%;
+  margin-top: 3rem !important;
+  align-self: center !important;
+
+  @include tablet {
+    max-width: 90% !important;
+    margin-top: 6rem !important;
+  }
+  @include desktop {
+    max-width: 900px !important;
+    margin-top: 9rem !important;
+  }
+}
 .modal-main {
   display: flex;
-  // background-color: black;
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+  }
 
   &__img {
-    height: 100%;
+    width: 100%;
+
+    @include tablet {
+      width: 50%;
+    }
   }
   &__text {
     margin-left: 10px;
-    &--title {
-      color: white;
-      font-weight: bold;
-      font-family: "Hind", sans-serif;
-    }
-    &--subtitle {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: seagreen;
-    }
-    &--production {
-      color: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+
+    @include tablet {
+      display: inline;
     }
   }
+  &--title {
+    margin: 0;
+    font-weight: bold;
+    font-family: "Hind", sans-serif;
+  }
+  &--subtitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgb(17, 75, 209);
+    margin-bottom: 2rem;
+  }
+  &--genre {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  &--production {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  &--details {
+    display: flex;
+    flex-direction: column;
+
+    // flex-wrap: wrap;
+  }
+}
+
+.detail-title {
+  font-weight: 700 !important;
+  color: rgb(17, 75, 209);
 }
