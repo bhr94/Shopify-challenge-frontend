@@ -5,7 +5,7 @@ export default function NominatedItemList({ handleRemove,handleMoreInfo }) {
  JSON.parse(localStorage.getItem("nominatedMovieList"))? movies = JSON.parse(localStorage.getItem("nominatedMovieList")):movies=null;
   return (
     <section className="list-container nominated-list">
-      {/* <h4>Nominations</h4> */}
+      <h4>Nominations</h4>
       {movies&&movies.length === 5 ? (
         <Alert>Congratualtions!!! Now you have 5 nominations</Alert>
       ) : null}

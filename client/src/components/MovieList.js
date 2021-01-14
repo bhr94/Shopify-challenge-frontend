@@ -1,5 +1,5 @@
 import MovieItem from "./MovieItem";
-
+import NotFound from "./NotFound";
 export default function MovieList({
   data,
   searchInput,
@@ -29,7 +29,7 @@ export default function MovieList({
             );
           })
         ) : (
-          <p>{data.Error}</p>
+          <NotFound/>
         )}
       </ul>
     </section>
