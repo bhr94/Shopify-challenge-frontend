@@ -5,7 +5,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: radial-gradient(black, transparent) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(#f3ecec));
+  background-image: linear-gradient(black, #f3ecec);
+  height: 100vh;
 }
 
 code {

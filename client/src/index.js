@@ -7,14 +7,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-notifications-component/dist/theme.css";
 import { ToastProvider } from "react-toast-notifications";
 import { BrowserRouter, Route } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
-    <BrowserRouter>
-      <ToastProvider>
-        <Route path="/" component={App} />
-      </ToastProvider>
-    </BrowserRouter>,
+  <BrowserRouter>
+    <ToastProvider>
+      <Route path="/" component={App} />
+    </ToastProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 
