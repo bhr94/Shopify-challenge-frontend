@@ -6,7 +6,7 @@ import {
   ModalFooter,
   CardImg,
 } from "reactstrap";
-import img from "../assets/Icons/Icon-likes.svg";
+import img from "../assets/Icons/camera.svg";
 
 const ModalExample = ({ toggle, modal, className, movie }) => {
   return (

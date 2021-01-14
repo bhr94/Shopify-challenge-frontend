@@ -1,5 +1,5 @@
 import { Button } from "reactstrap";
-import img from "../assets/Icons/Icon-likes.svg";
+import img from "../assets/Icons/camera.svg";
 export default function MovieItem({
   movie,
   handleNominate,
@@ -18,16 +18,17 @@ export default function MovieItem({
       </p>
       {nominated ? (
         <Button
+          outline
           color="secondary"
           className="list-item__button"
-          //  onClick={() => handleNominate(id)}
           disabled
         >
           Nominate
         </Button>
       ) : (
         <Button
-          color="success"
+          outline
+          color="secondary"
           className="list-item__button"
           onClick={() => handleNominate(id)}
         >
@@ -35,7 +36,8 @@ export default function MovieItem({
         </Button>
       )}
       <Button
-        color="info"
+        outline
+        color="primary"
         className="list-item__button"
         onClick={() => handleMoreInfo(id)}
       >
