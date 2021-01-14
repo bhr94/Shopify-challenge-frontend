@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./style/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-notifications-component/dist/theme.css";
-import { ToastProvider, useToasts } from "react-toast-notifications";
+import { ToastProvider } from "react-toast-notifications";
 import { BrowserRouter, Route } from "react-router-dom";
-import MovieDetails from "./components/MovieDetails";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(

@@ -9,7 +9,6 @@ import { useToasts } from "react-toast-notifications";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 import ModalExample from "./components/ModalExample";
-import Navigation from "./components/Navigation";
 import NavBarNominationList from "./components/NavBarNominationList";
 import {
   Navbar,
